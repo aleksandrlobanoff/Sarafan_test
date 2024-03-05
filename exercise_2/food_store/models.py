@@ -1,6 +1,6 @@
 from django.db import models
 
-from exercise_2.users.models import CustomUser
+from users.models import CustomUser
 
 
 class Category(models.Model):
@@ -31,7 +31,7 @@ class SubCategory(models.Model):
 
 
 class Product(models.Model):
-    subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE, verbose_name='Продукт')
+    subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE, verbose_name='Подкатегория')
     name = models.CharField(max_length=255)
     slug = models.SlugField(unique=True)
     image1 = models.ImageField(upload_to='product', null=True, blank=True)
