@@ -26,3 +26,20 @@ class SubCategory(models.Model):
     class Meta:
         verbose_name = "Подкатегория"
         verbose_name_plural = "Подкатегории"
+
+
+class Product(models.Model):
+    subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE, verbose_name='Продукт')
+    name = models.CharField(max_length=255)
+    slug = models.SlugField(unique=True)
+    image1 = models.ImageField(upload_to='product', null=True, blank=True)
+    image2 = models.ImageField(upload_to='product', null=True, blank=True)
+    image3 = models.ImageField(upload_to='product', null=True, blank=True)
+    price = models.DecimalField(max_digits=8, decimal_places=2)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Продукт'
+        verbose_name_plural = 'Продукты'
