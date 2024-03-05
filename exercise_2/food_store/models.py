@@ -1,5 +1,7 @@
 from django.db import models
 
+from exercise_2.users.models import CustomUser
+
 
 class Category(models.Model):
     name = models.CharField(max_length=255, verbose_name="Категория")
@@ -43,3 +45,12 @@ class Product(models.Model):
     class Meta:
         verbose_name = 'Продукт'
         verbose_name_plural = 'Продукты'
+
+
+class Cart(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
+
+    def __str__(self):
+        return f"{self.user.username} - {self.product.name}"
