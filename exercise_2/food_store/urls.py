@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
 from food_store.apps import FoodStoreConfig
-
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 app_name = FoodStoreConfig.name
 
 urlpatterns = [
@@ -16,5 +16,8 @@ urlpatterns = [
     path('products/create/', views.CreateProductView.as_view(), name='create_product'),
     path('products/<slug:slug>/update/', views.UpdateProductView.as_view(), name='update_product'),
     path('products/<slug:slug>/delete/', views.DeleteProductView.as_view(), name='delete_product'),
+    #Tokens
+    path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
 ]
