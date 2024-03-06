@@ -2,6 +2,7 @@ from rest_framework import generics
 from .models import Category
 from food_store.serializers import CategorySerializer
 
+from .pagination import CategoryPagination
 
 
 class CategoryListAPIView(generics.ListAPIView):
