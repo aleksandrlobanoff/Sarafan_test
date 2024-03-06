@@ -1,11 +1,23 @@
 from rest_framework import serializers
-from food_store.models import Category, Product, Cart
+from food_store.models import Category, SubCategory, Product, Cart
 
 
 class CategorySerializer(serializers.ModelSerializer):
+    subcategories = serializers.SerializerMethodField()
+
+    def get_subcategories(self, obj):
+        subcategories = obj.subcategory_set.all()  # Получаем все связанные подкатегории
+        return SubCategorySerializer(subcategories, many=True).data
+
     class Meta:
         model = Category
-        fields = '__all__'
+        fields = ['id', 'name', 'slug', 'subcategories']
+
+
+class SubCategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SubCategory
+        fields = ['id', 'name']
 
 
 class ProductSerializer(serializers.ModelSerializer):
