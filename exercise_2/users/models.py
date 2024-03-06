@@ -6,8 +6,6 @@ from django.contrib.auth.models import AbstractUser
 class CustomUser(AbstractUser):
     # Поле username для имени пользователя
     username = models.CharField(max_length=150, default='')
-    # Поле name для имени пользователя
-    name = models.CharField(max_length=255)
     # Поле email для адреса электронной почты пользователя
     email = models.EmailField(unique=True)
 
