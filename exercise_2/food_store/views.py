@@ -1,5 +1,5 @@
 from rest_framework import generics
-from .models import Category, Product
+from .models import Category, Product, Cart
 from food_store.serializers import CategorySerializer, ProductSerializer, CartSerializer, CartItemSerializer
 from rest_framework.response import Response
 from .pagination import CategoryPagination, ProductPagination
@@ -12,7 +12,7 @@ class CategoryListAPIView(generics.ListAPIView):
     pagination_class = CategoryPagination  # Использование класса пагинации для разбивки списка категорий на страницы
 
 
-class CreateCategoryAPIView(generics.CreateAPIView):
+class CreateCategoryAPIView(generics.ListCreateAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
 
