@@ -59,83 +59,83 @@ API будет доступно по адресу http://localhost:8000/.
 
 ### Категории
 
-- **GET /api/categories/**
+- **GET /categories/**
 
   Получить список всех категорий.
 
-- **POST /api/category/create/**
+- **POST /category/create/**
 
   Создать новую категорию. Требуется аутентификация.
 
-- **PUT /api/category/edit/{id}/**
+- **PUT /category/edit/{id}/**
 
   Обновить существующую категорию с указанным id. Требуется аутентификация.
 
-- **DELETE /api/category/delete/{pk}/**
+- **DELETE /category/delete/{pk}/**
 
   Удалить категорию с указанным pk. Требуется аутентификация.
 
 ### Продукты
 
-- **GET /api/products/**
+- **GET /products/**
 
   Получить список всех продуктов.
 
-- **GET /api/products/{slug}/**
+- **GET /products/{slug}/**
 
   Получить информацию о конкретном продукте по его слагу.
 
-- **POST /api/products/create/**
+- **POST /products/create/**
 
   Создать новый продукт. Требуется аутентификация.
 
-- **PUT /api/products/{slug}/update/**
+- **PUT /products/{slug}/update/**
 
   Обновить существующий продукт с указанным слагом. Требуется аутентификация.
 
-- **DELETE /api/products/{slug}/delete/**
+- **DELETE /products/{slug}/delete/**
 
   Удалить продукт с указанным слагом. Требуется аутентификация.
 
 ### Корзина
 
-- **GET /api/cart/**
+- **GET /cart/**
 
   Получить список товаров в корзине для аутентифицированного пользователя.
 
-- **POST /api/cart/add/**
+- **POST /cart/add/**
 
   Добавить продукт в корзину. Требуется аутентификация.
 
-- **PUT /api/cart/update/{pk}/**
+- **PUT /cart/update/{pk}/**
 
   Обновить количество товара в корзине с указанным pk. Требуется аутентификация.
 
-- **DELETE /api/cart/remove/{pk}/**
+- **DELETE /cart/remove/{pk}/**
 
   Удалить товар из корзины с указанным pk. Требуется аутентификация.
 
-- **GET /api/cart/summary/**
+- **GET /cart/summary/**
 
   Получить сводку корзины, включающую общее количество товаров и общую стоимость. Требуется аутентификация.
 
 ### Аутентификация
 
-- **POST /api/token/**
+- **POST /token/**
 
   Получить access token и refresh token, предоставив правильные учетные данные.
 
-- **POST /api/token/refresh/**
+- **POST /token/refresh/**
 
   Обновить access token, предоставив действующий refresh token.
 
 ### Swagger и ReDoc
 
-- **GET /api/swagger/**
+- **GET /swagger/**
 
   Документация Swagger UI для API.
 
-- **GET /api/redoc/**
+- **GET /redoc/**
 
   Документация ReDoc для API.
 
@@ -143,23 +143,23 @@ API будет доступно по адресу http://localhost:8000/.
 
 Вот некоторые примеры использования эндпоинтов API с помощью cURL:
 
-- **GET /api/categories/**
+- **GET /categories/**
 
-curl -X GET http://localhost:8000/api/categories/
+curl -X GET http://localhost:8000/categories/
 
-- **POST /api/category/create/**
+- **POST /category/create/**
 
-curl -X POST http://localhost:8000/api/category/create/ -H "Content-Type: application/json" -d '{"name": "Новая
+curl -X POST http://localhost:8000/category/create/ -H "Content-Type: application/json" -d '{"name": "Новая
 категория"}' -H "Authorization: Bearer <access_token>"
 
-- **PUT /api/category/edit/{id}/**
+- **PUT /category/edit/{id}/**
 
-curl -X PUT http://localhost:8000/api/category/edit/1/ -H "Content-Type: application/json" -d '{"name": "Обновленная
+curl -X PUT http://localhost:8000/category/edit/1/ -H "Content-Type: application/json" -d '{"name": "Обновленная
 категория"}' -H "Authorization: Bearer <access_token>"
 
-- **DELETE /api/category/delete/{pk}/**
+- **DELETE /category/delete/{pk}/**
 
-curl -X DELETE http://localhost:8000/api/category/delete/1/ -H "Authorization: Bearer <access_token>"
+curl -X DELETE http://localhost:8000/category/delete/1/ -H "Authorization: Bearer <access_token>"
 
 Обратите внимание, что вам нужно заменить <access_token> на действительный access token, полученный после
 аутентификации.
